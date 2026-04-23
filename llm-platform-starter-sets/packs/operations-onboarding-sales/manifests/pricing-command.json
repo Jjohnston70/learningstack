@@ -1,0 +1,18 @@
+{
+  "name": "pricing-command",
+  "version": "1.0.0",
+  "description": "Pricing advisory and proposal pricing support — retrieval-first, no write actions",
+  "module_type": "base",
+  "action_capability": "knowledge-only",
+  "source_type": "internal",
+  "required_tools": [],
+  "required_permissions": ["pricing.read"],
+  "output_mode": "structured",
+  "output_fields": ["summary", "risks", "recommended_actions"],
+  "keywords": ["price", "pricing", "cost", "rate", "fee", "tier", "package", "how much", "budget"],
+  "required_resources": [],
+  "retrieval_sources": ["packs/operations-onboarding-sales/docs/operations-map.md"],
+  "feasibility_notes": "Ready to normalize as knowledge-only retrieval module immediately",
+  "integration_order": 4,
+  "notes": "Start as knowledge-only. Add pricing calculator tool in Phase 5 if needed."
+}

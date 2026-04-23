@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "your-module-name output schema",
+  "description": "Defines the required output structure for this module. All fields listed here are validated at runtime.",
+  "type": "object",
+  "required": ["summary", "risks", "recommended_actions"],
+  "properties": {
+    "summary": {
+      "type": "string",
+      "minLength": 10,
+      "description": "2-4 sentence summary of the situation or result"
+    },
+    "risks": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "List of identified risks or issues"
+    },
+    "recommended_actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "List of concrete next actions the client should take"
+    }
+  },
+  "additionalProperties": true,
+  "_notes": {
+    "how_to_use": "Update required[] and properties to match your module's actual output_fields.",
+    "validation_engine": "The validator.py and validator.ts files check for required fields and non-empty values. This schema is the reference for what they enforce.",
+    "example_additional_fields": {
+      "deliverables": { "type": "array", "description": "Add if this module produces deliverable lists" },
+      "timeline": { "type": "string", "description": "Add if this module includes timeline output" },
+      "items_affected": { "type": "array", "description": "Add if this module affects files, records, or assets" }
+    }
+  }
+}

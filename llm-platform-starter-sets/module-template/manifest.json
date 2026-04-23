@@ -1,0 +1,14 @@
+{
+  "name": "your-module-name",
+  "version": "1.0.0",
+  "description": "One-line description of what this module does",
+  "module_type": "base",
+  "action_capability": "knowledge-only",
+  "required_tools": [],
+  "required_permissions": [],
+  "output_mode": "structured",
+  "output_fields": ["summary", "risks", "recommended_actions"],
+  "keywords": ["keyword1", "keyword2", "keyword3"],
+  "source_type": "internal",
+  "feasibility_notes": "Ready to wrap"
+}

@@ -1,0 +1,80 @@
+# dependencies.yaml — What this module needs to run
+# Fill this out before wiring the module to the platform.
+
+module_name: your-module-name
+version: "1.0.0"
+
+# External APIs or services this module calls
+external_services:
+  # - name: Google Sheets API
+  #   purpose: Read invoice data from tracking spreadsheet
+  #   auth_method: service_account
+  #   env_var: GOOGLE_SERVICE_ACCOUNT_JSON
+  #   required: true
+
+  # - name: Apps Script Web App
+  #   purpose: Execute drive inventory
+  #   auth_method: none (deployed as web app)
+  #   env_var: WORKSPACE_SCRIPT_URL
+  #   required: true
+
+# Google Workspace resource IDs (stored as environment variables, never hardcoded)
+google_resources:
+  # - type: spreadsheet
+  #   description: Main tracking spreadsheet
+  #   env_var: SPREADSHEET_ID
+  #   required: true
+
+  # - type: folder
+  #   description: Output folder in Drive
+  #   env_var: OUTPUT_FOLDER_ID
+  #   required: true
+
+  # - type: doc_template
+  #   description: Document template for output generation
+  #   env_var: TEMPLATE_DOC_ID
+  #   required: false
+
+  # - type: form
+  #   description: Intake form
+  #   env_var: INTAKE_FORM_ID
+  #   required: false
+
+# Apps Script deployment
+apps_script:
+  web_app_deployed: false       # Set true when script is deployed as web app
+  web_app_url_env_var: ""       # e.g., PROPOSAL_SCRIPT_URL
+  clasp_project_id: ""          # Optional: clasp project ID for version tracking
+  requires_oauth: false         # Set true if user OAuth is required (not just service account)
+
+# Python package dependencies (add to requirements.txt)
+python_packages:
+  # - requests>=2.31.0
+
+# Node/TypeScript package dependencies (add to package.json)
+node_packages:
+  # - "node-fetch": "^3.0.0"
+
+# Environment variables required
+required_env_vars:
+  # - name: ANTHROPIC_API_KEY
+  #   description: LLM provider key
+  #   required: true
+
+  # - name: DATABASE_URL
+  #   description: Postgres connection string
+  #   required: true
+
+# Setup order (steps that must happen before this module can run)
+setup_order:
+  # 1. Deploy Apps Script as web app and store URL in WORKSPACE_SCRIPT_URL
+  # 2. Create tracking spreadsheet and store ID in SPREADSHEET_ID
+  # 3. Set all env vars in Railway / Vercel / .env.local
+  # 4. Run smoke test to confirm tool adapters respond
+
+# OS/runtime assumptions
+runtime_assumptions:
+  python_version: "3.11+"
+  node_version: "20.x LTS"
+  os_requirements: cross-platform
+  active_session_required: false   # Set true if Apps Script needs UI context (SpreadsheetApp.getActiveSpreadsheet)

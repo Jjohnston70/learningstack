@@ -1,0 +1,10 @@
+{
+  "name": "financial-command",
+  "version": "1.2.0",
+  "description": "Handles financial analysis and reporting workflows",
+  "required_tools": ["calculator", "sheets"],
+  "required_permissions": ["finance.read"],
+  "output_mode": "structured",
+  "output_fields": ["summary", "risks", "recommended_actions"],
+  "keywords": ["budget", "invoice", "profit", "forecast", "cash flow", "overdue", "financial", "revenue", "expense", "margin"]
+}

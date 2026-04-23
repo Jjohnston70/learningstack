@@ -1,0 +1,44 @@
+# policies.yaml — Safety and compliance constraints for this module
+# These are enforced at runtime. Update before enabling write actions.
+
+module_name: your-module-name
+version: "1.0.0"
+
+# Data handling
+data_handling:
+  pii_in_logs: false          # NEVER allow PII in logs
+  pii_in_prompts: false       # Never send PII to LLM without anonymization
+  log_user_request: true      # Log request text (will be redacted by redactor)
+  log_response: false         # Do not log raw LLM responses
+
+# Allowed actions for this module
+allowed_actions:
+  read: true
+  draft: false                # Set true only when drafting is explicitly enabled
+  write: false                # Set true only with approval gate
+  delete: false               # Never enable without explicit override + audit
+
+# Write controls (only relevant when write: true above)
+write_controls:
+  requires_human_approval: true
+  approval_timeout_seconds: 300
+  log_all_writes: true
+
+# Redaction rules (in addition to global redactor patterns)
+custom_redaction_patterns:
+  # Add module-specific patterns here
+  # - pattern: "ACCOUNT-\\d{6}"
+  #   replacement: "[REDACTED_ACCOUNT_ID]"
+
+# Compliance flags
+compliance:
+  soc2_relevant: true
+  hipaa_relevant: false       # Set true if this module handles health data
+  pci_relevant: false         # Set true if this module handles payment data
+  gdpr_relevant: false        # Set true if EU user data is involved
+
+# Escalation rules
+escalation:
+  on_validation_failure: log_and_return_errors
+  on_tool_error: log_and_surface_to_user
+  on_permission_denied: log_denial_and_stop

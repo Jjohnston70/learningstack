@@ -1,0 +1,17 @@
+{
+  "name": "proposal-command",
+  "version": "1.0.0",
+  "description": "Generate professional business proposals and manage proposal output workflows",
+  "module_type": "base",
+  "action_capability": "approval-gated-write",
+  "source_type": "internal",
+  "required_tools": ["proposal_generator", "document_template_loader", "proposal_tracker", "email_sender"],
+  "required_permissions": ["proposals.read", "proposals.draft"],
+  "output_mode": "structured",
+  "output_fields": ["summary", "deliverables", "timeline", "next_steps"],
+  "keywords": ["proposal", "quote", "scope", "deliverable", "service", "project", "estimate", "engagement", "contract", "agreement"],
+  "required_resources": ["PROPOSAL_TEMPLATE_ID", "PROPOSALS_FOLDER_ID", "PROPOSAL_SPREADSHEET_ID"],
+  "feasibility_notes": "Ready to wrap — clearest workflow, defined I/O, Apps Script source available",
+  "integration_order": 1,
+  "source_location": "packs/operations-onboarding-sales/commands/proposal-generator/"
+}

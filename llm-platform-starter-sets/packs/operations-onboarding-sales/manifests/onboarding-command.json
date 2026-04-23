@@ -1,0 +1,17 @@
+{
+  "name": "onboarding-command",
+  "version": "1.0.0",
+  "description": "New client onboarding workflow: workspace setup, data import, training scheduling",
+  "module_type": "base",
+  "action_capability": "approval-gated-write",
+  "source_type": "internal",
+  "required_tools": ["workspace_setup", "email_sender", "calendar_scheduler", "checklist_tracker"],
+  "required_permissions": ["onboarding.read", "workspace.setup", "email.send"],
+  "output_mode": "structured",
+  "output_fields": ["summary", "items_affected", "next_steps"],
+  "keywords": ["onboard", "onboarding", "setup", "kickoff", "new client", "getting started", "welcome"],
+  "required_resources": ["ONBOARDING_TEMPLATE_ID", "ONBOARDING_SPREADSHEET_ID", "KICKOFF_EMAIL_TEMPLATE_ID"],
+  "feasibility_notes": "Wrapable with medium refactor — bot source available, more complex flow",
+  "integration_order": 3,
+  "source_location": "packs/operations-onboarding-sales/commands/onboarding-bot/"
+}

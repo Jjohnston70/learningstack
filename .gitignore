@@ -1,0 +1,30 @@
+# Secrets and local env
+.env
+.env.*
+*.env
+*.pem
+*.key
+credentials*
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Node / TypeScript
+node_modules/
+dist/
+coverage/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

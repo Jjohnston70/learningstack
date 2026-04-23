@@ -1,0 +1,51 @@
+{
+  "_notes": "OPTIONAL: Only include this file if the module supports tool execution. Delete if knowledge-only.",
+  "module_name": "your-module-name",
+  "version": "1.0.0",
+  "tools": [
+    {
+      "name": "get_data_example",
+      "description": "Read-only: retrieve data from an approved source",
+      "action_type": "read",
+      "requires_approval": false,
+      "python_adapter": "app/tools/your_tools.py::get_data_example",
+      "typescript_adapter": "src/tools/yourTools.ts::getDataExample",
+      "input_schema": {
+        "source_id": "string",
+        "filters": "object (optional)"
+      },
+      "output_schema": {
+        "records": "array",
+        "count": "number"
+      }
+    },
+    {
+      "name": "create_record_example",
+      "description": "Write: create a new record in an approved target",
+      "action_type": "write",
+      "requires_approval": true,
+      "approval_timeout_seconds": 300,
+      "python_adapter": "app/tools/your_tools.py::create_record_example",
+      "typescript_adapter": "src/tools/yourTools.ts::createRecordExample",
+      "input_schema": {
+        "target_id": "string",
+        "data": "object"
+      },
+      "output_schema": {
+        "record_id": "string",
+        "created": "boolean"
+      }
+    }
+  ],
+  "permission_model": {
+    "read_tools": ["get_data_example"],
+    "write_tools": ["create_record_example"],
+    "admin_tools": []
+  },
+  "_action_capability_levels": {
+    "knowledge-only": "No tools — retrieval and response only",
+    "read-only": "Only read/list/get tools — no writes",
+    "approval-gated-write": "Write tools exist but all require human approval",
+    "autonomous-write": "Write tools execute without approval — use with extreme caution"
+  }
+}

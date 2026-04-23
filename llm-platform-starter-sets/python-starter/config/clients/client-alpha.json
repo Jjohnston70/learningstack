@@ -1,0 +1,32 @@
+{
+  "client_id": "client-alpha",
+  "name": "Client Alpha",
+  "active_modules": [
+    "financial-command",
+    "proposal-command",
+    "workspace-command"
+  ],
+  "module_versions": {
+    "financial-command": "1.2.0",
+    "proposal-command": "2.0.1",
+    "workspace-command": "1.4.3"
+  },
+  "branding": {
+    "company_name": "Client Alpha",
+    "tone": "direct, practical"
+  },
+  "data_sources": [
+    "alpha-drive",
+    "alpha-crm",
+    "alpha-sheets"
+  ],
+  "permissions": {
+    "financial-command": ["read"],
+    "proposal-command": ["read", "draft"],
+    "workspace-command": ["read"]
+  },
+  "model_preferences": {
+    "default_model": "claude-sonnet-4",
+    "reasoning_model": "claude-opus-4"
+  }
+}

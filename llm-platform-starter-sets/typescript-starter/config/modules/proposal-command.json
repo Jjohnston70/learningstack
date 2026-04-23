@@ -1,0 +1,10 @@
+{
+  "name": "proposal-command",
+  "version": "2.0.1",
+  "description": "Generates proposals and manages proposal output workflows",
+  "required_tools": ["proposal_generator", "document_template_loader"],
+  "required_permissions": ["proposals.read", "proposals.draft"],
+  "output_mode": "structured",
+  "output_fields": ["summary", "deliverables", "timeline", "next_steps"],
+  "keywords": ["proposal", "quote", "scope", "deliverable", "service", "project", "estimate", "engagement", "contract", "agreement"]
+}

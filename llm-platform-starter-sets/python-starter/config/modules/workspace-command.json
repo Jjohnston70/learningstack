@@ -1,0 +1,10 @@
+{
+  "name": "workspace-command",
+  "version": "1.4.3",
+  "description": "Google Workspace operations: Drive, Gmail, folder management",
+  "required_tools": ["drive_inventory", "folder_setup", "gmail_automation"],
+  "required_permissions": ["drive.read", "gmail.read"],
+  "output_mode": "structured",
+  "output_fields": ["summary", "items_affected", "next_steps"],
+  "keywords": ["drive", "gmail", "folder", "file", "email", "workspace", "google", "inventory", "organize", "label", "archive"]
+}

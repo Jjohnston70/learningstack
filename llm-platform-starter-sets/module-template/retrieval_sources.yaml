@@ -1,0 +1,57 @@
+# retrieval_sources.yaml — Knowledge sources this module retrieves from
+# OPTIONAL: Only create this file if the module uses a retrieval layer.
+# Delete this file if the module is tool-only or action-only with no document retrieval.
+
+module_name: your-module-name
+version: "1.0.0"
+
+# Vector database collections this module has access to
+vector_collections:
+  # - name: cfr-title-49
+  #   description: CFR Title 49 DOT/FMCSA regulations, chunked and indexed
+  #   tenant_scoped: false    # true = only retrieve from client's namespace
+  #   top_k: 5
+  #   min_score: 0.72
+
+  # - name: client-sops
+  #   description: Client-specific SOPs and process docs
+  #   tenant_scoped: true
+  #   top_k: 3
+  #   min_score: 0.70
+
+# Local document paths (relative to knowledge/ directory)
+local_documents:
+  # - path: knowledge/industry/fleet/cfr-title-49/
+  #   type: markdown
+  #   chunk_size: 400
+  #   overlap: 50
+
+  # - path: knowledge/tenants/{tenant_id}/sops/
+  #   type: markdown
+  #   chunk_size: 300
+  #   overlap: 30
+
+# External URLs used as retrieval sources (fetched and indexed at setup time)
+url_sources:
+  # - url: https://www.ecfr.gov/current/title-49/part-382
+  #   description: CFR Part 382 — Controlled Substances and Alcohol Use
+  #   freshness_check: daily    # Check for changes daily
+  #   env_hash_key: CFR_382_HASH
+
+  # - url: https://www.ecfr.gov/current/title-49/part-391
+  #   description: CFR Part 391 — Qualifications of Drivers
+  #   freshness_check: daily
+  #   env_hash_key: CFR_391_HASH
+
+# Retrieval strategy
+retrieval_strategy:
+  default: hybrid               # vector | graph | hybrid
+  intent_classification: true   # Use intent classifier to choose strategy per query
+  graph_enabled: false          # Set true when Neo4j graph relationships are defined
+  reranking_enabled: false      # Set true when cross-encoder reranker is deployed
+
+# Context assembly
+context_assembly:
+  max_tokens: 2000
+  deduplication: true           # Remove duplicate chunk citations
+  citation_format: section      # How to label retrieved chunks: section | url | filename

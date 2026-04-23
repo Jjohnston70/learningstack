@@ -1,0 +1,17 @@
+{
+  "name": "contract-command",
+  "version": "1.0.0",
+  "description": "Generate client contracts and manage service agreement workflows",
+  "module_type": "base",
+  "action_capability": "approval-gated-write",
+  "source_type": "internal",
+  "required_tools": ["contract_generator", "document_template_loader", "signature_tracker"],
+  "required_permissions": ["contracts.read", "contracts.draft"],
+  "output_mode": "structured",
+  "output_fields": ["summary", "deliverables", "timeline", "next_steps"],
+  "keywords": ["contract", "agreement", "service agreement", "terms", "MSA", "SOW", "statement of work", "signature"],
+  "required_resources": ["CONTRACT_TEMPLATE_ID", "CONTRACTS_FOLDER_ID", "CONTRACT_SPREADSHEET_ID"],
+  "feasibility_notes": "Wrapable with minor cleanup — Apps Script source available in commands/",
+  "integration_order": 2,
+  "source_location": "packs/operations-onboarding-sales/commands/contract-command/"
+}
